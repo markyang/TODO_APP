@@ -2,7 +2,7 @@ var http = require('http'),
     express = require('express'),
     app = express(),
     sqlite3 = require('sqlite3').verbose(),
-    db = new sqlite3.Database(':memory:')
+    db = new sqlite3.Database(':memory:');
 
 
 app.configure(function() {
@@ -15,7 +15,7 @@ db.get("SELECT name FROM sqlite_master WHERE type='table' AND name='TODO'", func
     if(err !== null) {
         console.log(err);
     }
-    else if(row == null) {
+    else if(row === null) {
         db.run('CREATE TABLE "TODO" ("id" INTEGER PRIMARY KEY AUTOINCREMENT, "title" VARCHAR(255))', function(err) {
             if(err !== null) {
                 console.log(err);
@@ -47,7 +47,7 @@ app.get('/', function(req, res) {
 app.post('/add', function(req, res) {
     title = req.body.title;
     url = req.body.url;
-    sqlRequest = "INSERT INTO 'TODO' (title) VALUES('" + title + "')"
+    sqlRequest = "INSERT INTO 'TODO' (title) VALUES('" + title + "')";
     db.run(sqlRequest, function(err) {
         if(err !== null) {
             res.send(500, "An error has occurred -- " + err);

@@ -1,0 +1,18 @@
+block contents
+  body
+    h1 Welcome on Mark's TODO APP
+    
+    form(action="add", method="post")
+        label Item:
+        input(type="text", name="title")
+        br
+        input(type="submit", value="Add to list")
+
+    ul
+        - for(list in lists) {
+            li
+                a(href=lists[list].url)= lists[list].title
+                | &nbsp;- (
+                a(href="delete/#{lists[list].id}") delete
+                | )
+        - }

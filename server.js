@@ -15,7 +15,7 @@ db.get("SELECT name FROM sqlite_master WHERE type='table' AND name='TODO'", func
     if(err !== null) {
         console.log(err);
     }
-    else if(row === null) {
+    else  {
         db.run('CREATE TABLE "TODO" ("id" INTEGER PRIMARY KEY AUTOINCREMENT, "title" VARCHAR(255))', function(err) {
             if(err !== null) {
                 console.log(err);
@@ -24,9 +24,6 @@ db.get("SELECT name FROM sqlite_master WHERE type='table' AND name='TODO'", func
                 console.log("SQL Table 'TODO' initialized.");
             }
         });
-    }
-    else {
-        console.log("SQL Table 'TODO' already initialized.");
     }
 });
 

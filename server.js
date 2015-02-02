@@ -66,6 +66,6 @@ app.get('/delete/:id', function(req, res) {
     });
 });
 
-var server = http.createServer(app).listen("3000", "127.0.0.1", function() {
+var server = http.createServer(app).listen("3000", "0.0.0.0", function() {
 console.log("http://127.0.0.1:3000");
 });
